@@ -1,9 +1,16 @@
+import { Navigate, Outlet, Route, Routes } from 'react-router-dom'
+import SignUp from './pages/sign-up.pages'
+import SignIn from './pages/sign-in.pages'
 function App() {
 
   return (
-    <div className="bg-amber-200 text-6xl align-middle bg-center text-red-400">
-     Hello there
-    </div >
+    <main>
+      <Routes>
+
+        <Route path = "/sign-in" element = { <SignIn />} /> 
+        <Route path = "/sign-up" element = { <SignUp />} /> 
+      </Routes>
+    </main>
   )
 }
 
