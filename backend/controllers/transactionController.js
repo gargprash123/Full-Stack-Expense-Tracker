@@ -15,8 +15,12 @@ export const getTransactions = async (req, res) => {
 
     const { userId } = req.user;
 
-    const startDate = new Date(df || sevenDaysAgo);
+    const defaultStartDate = new Date();
+    defaultStartDate.setDate(1);
+    const startDate = new Date(df || defaultStartDate);
+    startDate.setHours(0, 0, 0, 0);
     const endDate = new Date(dt || new Date());
+    endDate.setHours(23, 59, 59, 999);
 
     const transactions = await pool.query({
       text: `SELECT * FROM tbltransaction WHERE user_id = $1 AND createdat BETWEEN $2 AND $3 AND (description ILIKE '%' || $4 || '%' OR status ILIKE '%' || $4 || '%' OR source ILIKE '%' || $4 || '%') ORDER BY id DESC`,
