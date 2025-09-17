@@ -10,9 +10,9 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 
 //app.use(cors({origin:[""]}))
-// app.use(cors('*'));
-const vercelFrontendURL = "https://full-stack-expense-tracker-fvix4cigg.vercel.app";
-app.use(cors({ origin: vercelFrontendURL }));
+app.use(cors('*'));
+// const vercelFrontendURL = "https://full-stack-expense-tracker-fvix4cigg.vercel.app";
+// app.use(cors({ origin: vercelFrontendURL }));
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
 
