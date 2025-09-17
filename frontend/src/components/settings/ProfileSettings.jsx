@@ -52,7 +52,7 @@ const ProfileSettings = () => {
   };
 
   return (
-    <div className="rounded-lg bg-white p-6 shadow dark:bg-gray-800">
+    <div className="rounded-lg bg-white p-6 shadow dark:bg-gray-600">
       <h3 className="text-xl font-semibold">Personal Information</h3>
       <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
         Update your personal details here.

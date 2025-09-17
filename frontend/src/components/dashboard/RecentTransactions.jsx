@@ -22,6 +22,9 @@ const RecentTransactions = ({ transactions }) => {
                           <div className="ml-4">
                             <div className="font-medium text-gray-900 dark:text-white">{tx.description}</div>
                             <div className="mt-1 text-gray-500 dark:text-gray-400">{tx.source}</div>
+                            <div className="mt-1 text-xs text-gray-400 dark:text-gray-500">
+    {new Date(tx.createdat).toLocaleString('en-IN', { month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true })}
+  </div>
                           </div>
                         </div>
                       </td>

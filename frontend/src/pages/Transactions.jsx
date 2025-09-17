@@ -11,7 +11,20 @@ const Transactions = () => {
   const [accounts, setAccounts] = useState([]); // Needed for the "Add Expense" modal
   const [isLoading, setIsLoading] = useState(true);
   const [isModalOpen, setModalOpen] = useState(false);
+
     const dataVersion = useStore(state => state.dataVersion);
+
+    const formatDate = (dateString) => {
+    // Check if the dateString is valid
+    if (!dateString || isNaN(new Date(dateString))) {
+      return '-'; // Return a dash if the date is invalid or null
+    }
+    // If valid, format it
+    return new Date(dateString).toLocaleString('en-IN', {
+      dateStyle: 'medium',
+      timeStyle: 'short',
+    });
+  };
   // State for filters
   const [searchTerm, setSearchTerm] = useState('');
   const [dateRange, setDateRange] = useState({
@@ -87,15 +100,15 @@ const Transactions = () => {
           placeholder="Search by description, status, source..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full rounded-md border p-2 sm:max-w-xs dark:bg-gray-700 dark:border-gray-600"
+          className="w-full rounded-md border p-2 sm:max-w-xs dark:bg-gray-300 dark:border-gray-600"
         />
         <div className="flex items-center gap-2">
-            <label htmlFor='from' className="text-sm">From:</label>
-            <input type="date" name="from" value={dateRange.from} onChange={handleDateChange} className="rounded-md border p-2 dark:bg-gray-700 dark:border-gray-600"/>
+            <label htmlFor='from' className="text-sm text-blue-500">From:</label>
+            <input type="date" name="from" value={dateRange.from} onChange={handleDateChange} className="rounded-md border p-2 dark:bg-gray-300 dark:border-gray-600"/>
         </div>
         <div className="flex items-center gap-2">
-             <label htmlFor='to' className="text-sm">To:</label>
-            <input type="date" name="to" value={dateRange.to} onChange={handleDateChange} className="rounded-md border p-2 dark:bg-gray-700 dark:border-gray-600"/>
+             <label htmlFor='to' className="text-sm text-blue-500">To:</label>
+            <input type="date" name="to" value={dateRange.to} onChange={handleDateChange} className="rounded-md border p-2 dark:bg-gray-300 dark:border-gray-600"/>
         </div>
       </div>
 
@@ -106,7 +119,7 @@ const Transactions = () => {
             <div className="overflow-hidden rounded-lg shadow ring-1 ring-black ring-opacity-5">
               <table className="min-w-full divide-y divide-gray-300 dark:divide-gray-700">
                 <thead className="bg-gray-50 dark:bg-gray-800">
-                  <tr>
+                  <tr className='text-white'>
                     <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold">Description</th>
                     <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold">Date</th>
                     <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold">Type</th>
@@ -116,11 +129,11 @@ const Transactions = () => {
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white dark:bg-gray-700">
                   {isLoading ? (
-                    <tr><td colSpan="5" className="p-4 text-center">Loading transactions...</td></tr>
+                    <tr><td colSpan="5" className="p-4 text-center text-white">Loading transactions...</td></tr>
                   ) : transactions.map((tx) => (
                     <tr key={tx.id}>
-                      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium">{tx.description}</td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">{new Date(tx.createdat).toLocaleDateString()}</td>
+                      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium dark:text-gray-300">{tx.description}</td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-300">{formatDate(tx.createdat)}</td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm">
                         <span className={`inline-flex rounded-full px-2 text-xs font-semibold leading-5 ${tx.type === 'income' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
                           {tx.type}
@@ -129,7 +142,7 @@ const Transactions = () => {
                       <td className={`whitespace-nowrap px-3 py-4 text-sm font-semibold ${tx.type === 'income' ? 'text-green-600' : 'text-red-600'}`}>
                         {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(tx.amount)}
                       </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-400">{tx.source}</td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 dark:text-gray-300">{tx.source}</td>
                     </tr>
                   ))}
                 </tbody>

@@ -201,7 +201,7 @@ export const addTransaction = async (req, res) => {
 
 export const transferMoneyToAccount = async (req, res) => {
   try {
-    const { userId } = req.body.user;
+    const { userId } = req.user;
     const { from_account, to_account, amount } = req.body;
 
     if (!(from_account || to_account || amount)) {

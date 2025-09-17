@@ -30,12 +30,12 @@ const dataVersion = useStore(state => state.dataVersion);
     fetchDashboardData();
   }, [dataVersion]);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div className='text-white'>Loading...</div>;
   if (!data) return <div>Failed to load data.</div>;
 
   return (
     <div>
-      <h1 className="text-3xl font-bold">Dashboard Overview</h1>
+      <h1 className="text-3xl font-bold text-gray-300">Dashboard Overview</h1>
       {/* Stat Cards */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         <StatCard title="Available Balance" amount={data.availableBalance} />

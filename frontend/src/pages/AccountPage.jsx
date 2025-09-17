@@ -40,7 +40,7 @@ const AccountPage = () => {
     setAddMoneyOpen(true);
   };
   
-  if (isLoading) return <div className="p-4">Loading accounts...</div>;
+  if (isLoading) return <div className="p-4 text-white">Loading accounts...</div>;
 
   return (
     <div className="mx-auto max-w-7xl">
