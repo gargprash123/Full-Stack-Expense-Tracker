@@ -1,12 +1,10 @@
 import { create } from 'zustand';
 
 const useStore = create((set) => ({
-    theme: localStorage.getItem('theme') ?? 'light',
     user: JSON.parse(localStorage.getItem('user')) ?? null,
-    setTheme: (theme) => {
-        localStorage.setItem('theme', theme);
-        set({ theme });
-    },
+    // Add a 'data version' number to track changes
+    dataVersion: 0,
+
     setCredentials: (user) => {
         localStorage.setItem('user', JSON.stringify(user));
         set({ user });
@@ -14,6 +12,10 @@ const useStore = create((set) => ({
     signOut: () => {
         localStorage.removeItem('user');
         set({ user: null });
+    },
+    // Add an action to increment the version, signaling a refresh is needed
+    refreshData: () => {
+        set(state => ({ dataVersion: state.dataVersion + 1 }));
     },
 }));
 
