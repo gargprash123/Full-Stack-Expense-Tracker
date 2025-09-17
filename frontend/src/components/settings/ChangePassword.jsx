@@ -33,22 +33,22 @@ const ChangePassword = () => {
 
     return (
         <div className="rounded-lg bg-white p-6 shadow dark:bg-gray-600">
-            <h3 className="text-xl font-semibold">Change Password</h3>
+            <h3 className="text-xl font-semibold text-blue-300">Change Password</h3>
             <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
                 For your security, please do not share your password with anyone.
             </p>
             <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-4 max-w-md">
-                <div>
+                <div className='text-white'>
                     <label htmlFor="currentPassword">Current Password</label>
                     <input id="currentPassword" type="password" {...register("currentPassword")} className="mt-1 w-full rounded-md border p-2 dark:bg-gray-700"/>
                     {errors.currentPassword && <p className="text-red-500 text-sm">{errors.currentPassword.message}</p>}
                 </div>
-                <div>
+                <div className='text-white'>
                     <label htmlFor="newPassword">New Password</label>
                     <input id="newPassword" type="password" {...register("newPassword")} className="mt-1 w-full rounded-md border p-2 dark:bg-gray-700"/>
                     {errors.newPassword && <p className="text-red-500 text-sm">{errors.newPassword.message}</p>}
                 </div>
-                <div>
+                <div className='text-white'>
                     <label htmlFor="confirmPassword">Confirm New Password</label>
                     <input id="confirmPassword" type="password" {...register("confirmPassword")} className="mt-1 w-full rounded-md border p-2 dark:bg-gray-700"/>
                     {errors.confirmPassword && <p className="text-red-500 text-sm">{errors.confirmPassword.message}</p>}

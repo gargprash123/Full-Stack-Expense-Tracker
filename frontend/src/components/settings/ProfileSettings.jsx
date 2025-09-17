@@ -53,31 +53,31 @@ const ProfileSettings = () => {
 
   return (
     <div className="rounded-lg bg-white p-6 shadow dark:bg-gray-600">
-      <h3 className="text-xl font-semibold">Personal Information</h3>
-      <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+      <h3 className="text-xl font-semibold text-blue-300">Personal Information</h3>
+      <p className="mt-1 text-sm text-gray-600 dark:text-gray-200">
         Update your personal details here.
       </p>
       <form onSubmit={handleSubmit(onSubmit)} className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
-        <div>
+        <div className='text-white'>
           <label htmlFor="firstName">First Name</label>
-          <input id="firstName" {...register("firstName")} className="mt-1 w-full rounded-md border p-2 dark:bg-gray-700"/>
+          <input id="firstName" {...register("firstName")} className="mt-1 w-full rounded-md border p-2 dark:bg-gray-500"/>
           {errors.firstName && <p className="text-red-500 text-sm">{errors.firstName.message}</p>}
         </div>
-        <div>
+        <div className='text-white'>
           <label htmlFor="lastname">Last Name</label>
-          <input id="lastname" {...register("lastname")} className="mt-1 w-full rounded-md border p-2 dark:bg-gray-700"/>
+          <input id="lastname" {...register("lastname")} className="mt-1 w-full rounded-md border p-2 dark:bg-gray-500"/>
         </div>
-        <div>
+        <div className='text-white'>
           <label htmlFor="country">Country</label>
-          <input id="country" {...register("country")} className="mt-1 w-full rounded-md border p-2 dark:bg-gray-700"/>
+          <input id="country" {...register("country")} className="mt-1 w-full rounded-md border p-2 dark:bg-gray-500"/>
         </div>
-        <div>
+        <div className='text-white'>
           <label htmlFor="currency">Currency</label>
-          <input id="currency" {...register("currency")} className="mt-1 w-full rounded-md border p-2 dark:bg-gray-700"/>
+          <input id="currency" {...register("currency")} className="mt-1 w-full rounded-md border p-2 dark:bg-gray-500"/>
         </div>
-        <div className="sm:col-span-2">
+        <div className="sm:col-span-2 text-white">
           <label htmlFor="contact">Contact</label>
-          <input id="contact" {...register("contact")} className="mt-1 w-full rounded-md border p-2 dark:bg-gray-700"/>
+          <input id="contact" {...register("contact")} className="mt-1 w-full rounded-md border p-2 dark:bg-gray-500"/>
         </div>
         <div className="sm:col-span-2 text-right">
           <button type="submit" disabled={isSubmitting} className="rounded-md bg-indigo-600 px-4 py-2 text-white disabled:bg-indigo-400">

@@ -136,6 +136,9 @@ const SignUp = () => {
             </Link>
           </p>
       </div>
+      <p className="absolute bottom-4 text-center text-sm text-gray-500">
+        Created and developed by Prashant Garg
+      </p>
     </div>
   );
 };

@@ -31,6 +31,13 @@ const Sidebar = () => {
           </NavLink>
         ))}
       </nav>
+      <div>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <p className="text-center text-xs text-gray-400">
+          Created & Developed by <br />
+          <span className="font-semibold text-gray-500 dark:text-gray-300">Prashant Garg<br/> IIT BHU <br/> Electrical Engineering</span>
+        </p>
+      </div>
     </aside>
   );
 };
