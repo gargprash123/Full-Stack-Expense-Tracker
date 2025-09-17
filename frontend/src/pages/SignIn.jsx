@@ -1,6 +1,3 @@
-// This file is functionally identical to the previously provided sign-in.pages.jsx
-// It uses the setCredentials action from the store upon successful login.
-// (Content omitted for brevity but is the same as the prior example)
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -28,8 +25,8 @@ const SignIn = () => {
 
   const onSubmit = async (data) => {
     try {
-      // Corresponds to POST /api-v1/auth/sign-in
-      const response = await api.post('/auth/sign-in', data);
+      // Corresponds to the signinUser function in authController.js
+      const response = await api.post('/auth/sign-in', data); 
       setCredentials(response.data);
       toast.success('Welcome back!');
       navigate('/dashboard');
@@ -47,25 +44,57 @@ const SignIn = () => {
               Sign in to your account
             </h2>
           </div>
+
           <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-6">
-             {/* Form content from previous example */}
-             <div>
-              <label htmlFor="email">Email</label>
-              <input id="email" type="email" {...register("email")} />
-              {errors.email && <p>{errors.email.message}</p>}
+            {/* Email Input */}
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                Email address
+              </label>
+              <div className="mt-1">
+                <input
+                  id="email"
+                  type="email"
+                  autoComplete="email"
+                  {...register("email")}
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                />
+                {errors.email && <p className="mt-2 text-sm text-red-500">{errors.email.message}</p>}
+              </div>
             </div>
-             <div>
-              <label htmlFor="password">Password</label>
-              <input id="password" type="password" {...register("password")} />
-              {errors.password && <p>{errors.password.message}</p>}
+
+            {/* Password Input */}
+            <div>
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                Password
+              </label>
+              <div className="mt-1">
+                <input
+                  id="password"
+                  type="password"
+                  autoComplete="current-password"
+                  {...register("password")}
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                />
+                {errors.password && <p className="mt-2 text-sm text-red-500">{errors.password.message}</p>}
+              </div>
             </div>
-            <button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? 'Signing In...' : 'Sign In'}
-            </button>
+            
+            {/* Submit Button */}
+            <div>
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-indigo-400 dark:focus:ring-offset-gray-800"
+              >
+                {isSubmitting ? 'Signing In...' : 'Sign In'}
+              </button>
+            </div>
           </form>
-          <p className="mt-6 text-center text-sm">
+
+          <p className="mt-6 text-center text-sm text-gray-600 dark:text-gray-400">
             Don't have an account?{' '}
-            <Link to="/sign-up" className="font-medium text-indigo-600 hover:text-indigo-500">
+            <Link to="/sign-up" className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">
               Sign up
             </Link>
           </p>
@@ -73,4 +102,5 @@ const SignIn = () => {
     </div>
   );
 };
+
 export default SignIn;
