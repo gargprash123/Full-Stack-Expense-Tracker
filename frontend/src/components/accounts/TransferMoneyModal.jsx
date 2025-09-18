@@ -38,7 +38,7 @@ const TransferMoneyModal = ({ isOpen, onClose, accounts, onTransferSuccess }) =>
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Transfer Money Between Accounts">
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 dark:text-white">
         <div>
             <label htmlFor="from_account">From</label>
             <select id="from_account" {...register("from_account")} className="w-full rounded-md border p-2 dark:bg-gray-700">

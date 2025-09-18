@@ -1,10 +1,6 @@
-// This file is functionally identical to the previously provided dashboard.pages.jsx
-// It fetches and displays all the data returned by your dashboard endpoint.
-// (Content omitted for brevity but is the same as the prior example)
 import React, { useEffect, useState } from 'react';
 import { toast } from 'sonner';
 import api from '../libs/api';
-// Assuming you create the dashboard components in src/components/dashboard/
 import StatCard from '../components/dashboard/StatCard'; 
 import AnalyticsChart from '../components/dashboard/AnalyticsChart';
 import RecentTransactions from '../components/dashboard/RecentTransactions';

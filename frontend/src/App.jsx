@@ -14,7 +14,6 @@ import Sidebar from './components/layout/Sidebar';
 import Navbar from './components/layout/Navbar';
 
 const RootLayout = () => {
-  // Correctly select only the 'user' object for authentication check
   const { user } = useStore();
 
   if (!user) {

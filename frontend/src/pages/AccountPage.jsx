@@ -23,7 +23,7 @@ const AccountPage = () => {
     try {
       // Corresponds to getAccounts in accountController.js
       const response = await api.get('/accounts');
-      setAccounts(response.data.data); // Based on your API response structure
+      setAccounts(response.data.data);
     } catch (error) {
       toast.error('Failed to fetch accounts.');
     } finally {

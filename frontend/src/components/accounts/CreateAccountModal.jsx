@@ -35,7 +35,7 @@ const CreateAccountModal = ({ isOpen, onClose, onAccountCreated }) => {
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Create New Account">
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-white">
         <div>
           <label htmlFor="name">Account Name (e.g., Savings)</label>
           <input id="name" {...register("name")} className="w-full rounded-md border p-2 dark:bg-gray-700"/>
