@@ -42,7 +42,7 @@ const AddExpenseModal = ({ isOpen, onClose, accounts, onExpenseAdded }) => {
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Add New Expense">
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-white">
         <div>
             <label htmlFor="account_id">From Account</label>
             <select id="account_id" {...register("account_id")} className="w-full rounded-md border p-2 dark:bg-gray-700">

@@ -41,6 +41,11 @@ const SignUp = () => {
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-100 px-4 dark:bg-gray-900">
       <div className="w-full max-w-md space-y-8 rounded-2xl bg-white p-8 shadow-xl dark:bg-gray-800">
+        <div className="text-center">
+            <h1 className="text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-500">
+                Welcome to FinMo
+            </h1>
+         </div>
          <div className="text-center">
             <FiUserPlus className="mx-auto h-12 w-12 text-indigo-600 dark:text-indigo-400" />
             <h2 className="mt-6 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">

@@ -13,6 +13,11 @@ const Sidebar = () => {
   return (
     <aside className="hidden w-64 flex-col border-r bg-white p-6 dark:border-gray-700 dark:bg-gray-800 md:flex">
       <div className="mb-10 text-2xl font-bold text-indigo-600 dark:text-indigo-400">
+        <div className="text-center">
+                    <h1 className="text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-500">
+                        FinMo
+                    </h1>
+                 </div>
         Expenses Tracker
       </div>
       <nav className="flex flex-col space-y-2">
