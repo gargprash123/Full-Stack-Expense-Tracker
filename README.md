@@ -7,7 +7,7 @@ write .env file to run this project
 in backend - 
 DATABASE_URI = YOUR DATABASE URI
 PORT=5001
-JWT_SECRET= YOUR JWT SECRET KEY - mysecret12345
+JWT_SECRET= YOUR JWT SECRET KEY - yourjwtsecretkey
 
 in frontend - 
 VITE_API_URL=http://localhost:5001/api-v1
