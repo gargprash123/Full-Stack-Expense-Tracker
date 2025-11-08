@@ -7,6 +7,7 @@ import { toast } from 'sonner';
 import { FiLogIn } from 'react-icons/fi';
 import useStore from '../store';
 import api from '../libs/api';
+import { GoogleLogin } from '@react-oauth/google';
 
 const signInSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
@@ -33,6 +34,27 @@ const SignIn = () => {
     } catch (error) {
       toast.error(error.response?.data?.message || 'Sign in failed.');
     }
+  };
+
+  const handleGoogleSuccess = async (credentialResponse) => {
+    const idToken = credentialResponse.credential;
+    try {
+      // Send the Google token to new backend endpoint
+      const response = await api.post('/auth/google-sign-in', { token: idToken });
+      
+      // Use your existing setCredentials function!
+      setCredentials(response.data);
+      toast.success('Welcome!');
+      navigate('/dashboard');
+
+    } catch (error) {
+      toast.error(error.response?.data?.message || 'Google Sign-in failed.');
+    }
+  };
+
+  // Add handler for Google Sign-In Error
+  const handleGoogleError = () => {
+    toast.error('Google login failed. Please try again.');
   };
   
   return (
@@ -96,6 +118,30 @@ const SignIn = () => {
               </button>
             </div>
           </form>
+
+          {/* Add the Google Button and separator */}
+        <div className="relative mt-6">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-gray-300 dark:border-gray-600" />
+          </div>
+          <div className="relative flex justify-center text-sm">
+            <span className="bg-white px-2 text-gray-500 dark:bg-gray-800 dark:text-gray-400">
+              Or continue with
+            </span>
+          </div>
+        </div>
+
+        <div className="mt-6 flex justify-center">
+          <GoogleLogin
+            onSuccess={handleGoogleSuccess}
+            onError={handleGoogleError}
+            useOneTap
+            theme="filled_black"
+            shape="rectangular"
+            width="320px" // Adjust width
+          />
+        </div>
+        {/* End of new section */}
 
           <p className="mt-6 text-center text-sm text-gray-600 dark:text-gray-400">
             Don't have an account?{' '}

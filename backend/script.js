@@ -36,6 +36,13 @@
 // -- 	updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 // -- );
 
+// -- Add a column to store the user's unique Google ID
+// -- ALTER TABLE tbluser
+// -- ADD COLUMN google_id VARCHAR(255) UNIQUE;
+
+// -- -- Make the password column optional (nullable)
+// -- ALTER TABLE tbluser
+// -- ALTER COLUMN password DROP NOT NULL;
 // -- SELECT * FROM tbluser
 // -- DROP TABLE tbluser;
 // -- SELECT * FROM tblaccount;
